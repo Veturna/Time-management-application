@@ -23,3 +23,13 @@ function renderTask(taskId, title, description, status) {
     console.log('opis to: ', description)
     console.log('status to: ', status)
 }
+
+document.addEventListener('DOMConentLoaded', function() {
+    apiListTask().then(
+        function(response) {
+            response.data.forEach(
+                function(task) { renderTask(task.id, task.title, task.description, task.status) }
+            )
+        }
+    )
+})
